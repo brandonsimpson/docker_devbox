@@ -73,7 +73,7 @@ Create a docker machine using the vmwarefusion driver. A new machine name will b
 Defaults:
 
 * CPUs: 2
-* Disk Size: 30GB
+* Disk Size: 40GB
 * Memory: 2048MB
 
 ```
