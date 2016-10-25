@@ -10,7 +10,7 @@ docker-machine env $NAME
 eval "$(docker-machine env $NAME)"
 
 # Start containers in this order for service linking
-docker start mysql56 redis php56 nginx varnish
+docker start mysql redis php nginx varnish
 
 echo
 printf '%180s\n' | tr ' ' -

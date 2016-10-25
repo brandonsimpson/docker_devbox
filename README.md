@@ -1,13 +1,6 @@
-# Katana Dev Team Docker Environment
+# Docker Dev PHP+Nginx Environment
 
-This package allows you to create a new docker machine, install our current development stack, 
-link all required services together, and easily drop in new virtual host configurations for new sites.
-
-**Goal**
-
-The goal is to have all of us running on the same development stack. If one of us needs a new version of software, 
-we should all be able to install it via code by simply doing a `git pull` and `sh build.sh --rebuild` command to have
-the latest software required to continue development.
+This package allows you to create a new docker machine, link all required services together, and easily drop in new virtual host configurations for new sites.
 
 **Requirements:**
 
@@ -15,12 +8,18 @@ the latest software required to continue development.
 * VMware Fusion
 * Docker Machine - https://www.docker.com/docker-toolbox
 
-**Bugs**
+---
 
-This is a work in progress. There have been many many many bugs along the way. If you run into any issues, please attempt to 
-fix them via code or a reproducible manner so we can all keep our development environments up-to-date.
+## Software Versions
+
+* Alpine Linux
+* PHP7-FPM - https://hub.docker.com/r/pvlltvk/php7-fpm
+* MySQL 5.7
+* Redis 3
+* Varnish 4
 
 ---
+
 
 ## Installation
 
@@ -30,18 +29,18 @@ local /Users/*yourname*/Sites/vhosts folder to /var/www/vhosts.
 
 2. `mysqldump --all-databases` from your current mysql server(s) to import later.
 
-3. Create a new folder which you want to call your new docker machine. For example, to create a new machine called `katana` we'll create a new folder:
+3. Create a new folder which you want to call your new docker machine. For example, to create a new machine called `devbox` we'll create a new folder:
     
     ```
-    mkdir -p ~/Sites/docker/katana
+    mkdir -p ~/Sites/docker/devbox
     ```
 
-4. Change into your new directory: `cd ~/Sites/docker/katana`
+4. Change into your new directory: `cd ~/Sites/docker/devbox`
 
 5. Clone this repo into your new directory:
 
     ```
-    git clone git@github.com:KatanaLLC/dev-docker.git .
+    git clone git@github.com:brandonsimpson/docker_devbox.git .
     ``` 
     
 6. Create a new docker machine:
@@ -68,12 +67,12 @@ local /Users/*yourname*/Sites/vhosts folder to /var/www/vhosts.
 
 ## Create Docker Machine
 
-Create a docker machine using the vmwarefusion driver. A new machine name will be based on the current folder name being run in, i.e. katana
+Create a docker machine using the vmwarefusion driver. A new machine name will be based on the current folder name being run in, i.e. devbox
 
 Defaults:
 
 * CPUs: 2
-* Disk Size: 40GB
+* Disk Size: 20GB
 * Memory: 2048MB
 
 ```
@@ -145,20 +144,12 @@ in place and the nginx container restarted for a new virtual host to load.
 3. Custom environment variables can be set with additional fastcgi_param parameters, for example:
 
     ```
-    fastcgi_param MAGE_RUN_CODE hhu;
     fastcgi_param MAGE_RUN_TYPE store;
     ```    
     
 **Hostnames Configured:**
 
-* **hhu.dev** (hay house university laravel site)
-* **local.hayhouse.com** (hay house magento - hhus)
-* **local.hayhouse.co.uk** (hay house magento - hhuk)
-* **local.hayhouse.com.au** (hay house magento - hhau)
-* **local.hayhouseradio.com** (hay house radio)
-* **local.hayhouseuniversity.com** (hay house magento - hhu)
-* **local.suzeorman.com** (hay house magento - suzeorman)
-
+* **local.dev** (local dev site)
     
 ---
 

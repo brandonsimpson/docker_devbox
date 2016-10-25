@@ -14,7 +14,7 @@ pid-file                       = /var/lib/mysql/mysql.pid
 
 # MyISAM #
 key-buffer-size                = 32M
-myisam-recover                 = FORCE,BACKUP
+#myisam-recover                 = FORCE,BACKUP
 
 # SAFETY #
 max-allowed-packet             = 16M
@@ -27,6 +27,7 @@ datadir                        = /var/lib/mysql/
 log-bin                        = /var/lib/mysql/mysql-bin
 expire-logs-days               = 14
 sync-binlog                    = 1
+server-id					   = 0
 
 # CACHES AND LIMITS #
 tmp-table-size                 = 256M
