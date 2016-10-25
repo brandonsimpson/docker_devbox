@@ -49,7 +49,7 @@ mysql:latest
 #-v /mnt/sda1/var/lib/mysql/$NAME:/var/lib/mysql \
 #-v /mnt/hgfs$PWD/etc/mysql/conf.d:/etc/mysql/conf.d \
 
-sleep 2
+sleep 5
 echo "mysql logs:"
 docker logs mysql
 
@@ -100,18 +100,9 @@ docker run --name nginx -d \
 --link php:php-fpm \
 nginx
 
-#echo "nginx logs:"
-#docker logs nginx
-#echo
-
-# we have to remove redis and rebuild it after our php/nginx container is linked...
-# no clue why but it doesn't allow access if this doesn't get rebuilt after the others
-#docker rm -f redis && docker run -d --name redis -p 6379:6379 redis:latest
-
 echo
 printf '%100s\n' | tr ' ' -
 echo
-
 
 ##### VARNISH
 
@@ -127,12 +118,9 @@ sleep 2
 echo "varnish logs:"
 docker logs varnish
 
-
 echo
 printf '%100s\n' | tr ' ' -
 echo
 
 #sh stop.sh
 #sh start.sh
-
-
